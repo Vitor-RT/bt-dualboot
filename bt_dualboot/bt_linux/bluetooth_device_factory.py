@@ -13,7 +13,9 @@ def extract_macs(device_info_path):
         hash: Kind of { device_mac: <device MAC>, adapter_mac: <adapter MAC> }
     """
 
-    match = re.search("([A-F0-9:]+)/([A-F0-9:]+)/info$", device_info_path)
+    match = re.search(
+        r"([A-F0-9:\uF000-\uFFFF]+)/([A-F0-9:\uF000-\uFFFF]+)/info$", device_info_path
+    )
     if match is None:
         return None
 
